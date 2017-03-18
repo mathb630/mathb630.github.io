@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+   <head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="" crossorigin="anonymous">
+     </script>
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+   <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+     
+     <style>
+        html, body {
+          height:100%;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+       }
+       
+       #map {
+         height: 100%;
+         width: 100%;
+       }
+       
+       .buttons {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+       }
+     </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="buttons">
+         <button class="Businesses">Businesses</button>
+         <button class="Reset">Rest</button>
+    </div>
+         
+    <script>
+      var Legally Operating Businesses;
+      $(document).ready(function ()  {
+            carto.db.createVis('map',
+                  'https://bm8993.carto.com/u/api/v2/viz/72e1d3c4-f8f5-11e6-835c-0e3ebc282e83/viz.json',)
+                      .done(function (vis, layers)  {
+                      Legally Operating Businesses = layers[1].getSubLayer(0);
+                           });
+                 $('.public-water').click(function ()  {
+                      Legally Operating Businesses.setSQL("SELECT * FROM Legally Operating Businesses WHERE Legally Operating Businesses = 
+                      'LEGAL BUSINESS'");
+                });
+                $(',reset').click(function (){
+                
+        });
+    </script>
+  </body>         
+</html>
