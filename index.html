@@ -16,22 +16,42 @@
           padding: 0;
           width: 100%;
        }
+        
         #map {
          height: 100%;
          width: 100%;
        }
+        
+        .buttons {
+           position: absolute;
+           top: 15px;
+           left: 15px;
+        }           
      </style>
   </head>
   <body>
     <div id="map"></div>
-    
+     <div class="buttons">
+     <button class="legal businesses">legal businesses</button>
+     <button class="reset">reset</button>
+     </div>
+     
     <script>
+       var watsanlayer
       $(document).ready(function ()  {
             carto.db.createVis('map',
-                  'https://bm8993.carto.com/u/bm8993/api/v2/viz/b33f2f0c-f8f5-11e6-975b-0ee66e2c9693/viz.json', {
-                        zoom: 14,
+                  'https://bm8993.carto.com/u/bm8993/api/v2/viz/b33f2f0c-f8f5-11e6-975b-0ee66e2c9693/viz.json',)
+                       .done(function (vis, layers) {
+                       watsanlayer = layers[1].getSubLayer(0);
                                });           
+       $('.public-water').click(function ()   {
+          watsanLayer.setSQL("SELECT * FROM watsan WHERE watsan =
+                   'water_public'");
         });
+         $'reset').click(function () {
+            watsanLayer.setSQL("SELECT * FROM watsan");
+        });
+     });
     </script>
   </body>         
 </html>
