@@ -45,8 +45,7 @@
                        watsanlayer = layers[1].getSubLayer(0);
                                });           
        $('.public-water').click(function ()   {
-          watsanLayer.setSQL("SELECT * FROM watsan WHERE watsan =
-                   'water_public'");
+          watsanLayer.setSQL("SELECT * FROM watsan WHERE watsan = 'water_public'");
         });
          $'reset').click(function () {
             watsanLayer.setSQL("SELECT * FROM watsan");
