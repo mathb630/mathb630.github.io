@@ -45,10 +45,10 @@
                        watsanlayer = layers[1].getSubLayer(0);
                                });           
        $('.public-water').click(function ()   {
-          watsanLayer.setSQL("SELECT * FROM watsan WHERE watsan = 'water_public'");
+          watsanLayer.setSQL("SELECT * FROM watsan WHERE Legally Operating Businesses = 'LEGAL BUSINESS'");
         });
          $'reset').click(function () {
-            watsanLayer.setSQL("SELECT * FROM watsan");
+            watsanLayer.setSQL("SELECT * FROM Legally Operating Businesses");
         });
      });
     </script>
