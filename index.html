@@ -27,12 +27,9 @@
     <div id="map"></div>
      
     <script>
-       var 
       $(document).ready(function ()  {
             carto.db.createVis('map',
-                  'https://thenewschool.carto.com/u/brelsfoeagain/api/v2/viz/79edb122-0374-11e7-b189-0e233c30368f/viz.json')
-                  .done(function (vis, layers) {
-                     watsanLayer = layers[1].getSubLayer(0);
+                  'https://thenewschool.carto.com/u/brelsfoeagain/api/v2/viz/79edb122-0374-11e7-b189-0e233c30368f/viz.json');
       });
      });
     </script>
