@@ -1,18 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>jQuery Example</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.6.1.min.js">
-</script>
-    <script type="text/javascript">
-      //$(document).ready() is cross-browser
-      $(document).ready(function() {
-        alert("jQuery popup!");
-      });
-    </script>
+<!doctype html>
+<html>
+   <head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
+     crossorigin="anonymous">
+     </script>
+    <link rel="stylesheet" href="https://cartodb-
+           libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <script src="https://cartodb-
+           libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.js"></script>
+     
+     <style>
+        html, body {
+          height:100%;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+        }
+        
+        #map {
+         height: 100%;
+         width: 100%;
+        }           
+     </style>
   </head>
   <body>
-  </body>
+    <div id="map"></div>
+     
+    <script>
+      $(document).ready(function ()  {
+            cartodb.createVis('map',
+                  'https://thenewschool.carto.com/u/brelsfoeagain/api/v2/viz/79edb122-0374-11e7-b189-0e233c30368f/viz.json',)
+                  .done(function (vis, layers) {
+                    watsanlayer = layers[1].getSubLayer(0);
+            });
+     </body>         
 </html>
+
+
+
