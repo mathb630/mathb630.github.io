@@ -1,46 +1,73 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html>
-  <head>
-    <title>Legal Businesses</title>
-    <style>
-      html, body, #map {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-      }
-    </style>
+    <head>
+        <meta charset='utf-8' />
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-  </head>
-  <body>
-    <div id="map"></div>
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+        <!--
+            Load Carto's code so we can pull in our Carto maps.
+        -->
+        <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
 
-    <script>
-      function main() {
-        cartodb.createVis('map', 'http://bm8993.carto.com/api/v2/viz/72e1d3c4-f8f5-11e6-835c-0e3ebc282e83/viz.json', {
-            shareable: true,
-            title: true,
-            description: true,
-            search: true,
-            tiles_loader: true,
-            center_lat: 0,
-            center_lon: 0,
-            zoom: 2
-        })
-        .done(function(vis, layers) {
-          layers[1].setInteraction(true);
-          layers[1].on('featureOver', function(e, latlng, pos, data) {
-            cartodb.log.log(e, latlng, pos, data);
-          });
-          var map = vis.getNativeMap();
-        })
-        .error(function(err) {
-          console.log(err);
-        });
-      }
-    </script>
-  </body>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            #map {
+                height: 100%;
+                width: 100%;
+            }
+          
+            .input-box {
+                background: white;
+                border-radius: 5px;
+                position: absolute;
+                padding: 5px;
+                top: 75px;
+                right: 25px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="map"></div>
+        <div class="input-box">
+            <input type="text" class="name-input" placeholder="Enter a name" />
+        </div>
+      
+        <script type="template/html" id="popup-template">
+          <div class="cartodb-popup v2">
+            <a href="#close" class="cartodb-popup-close-button close">x</a>
+            <div class="cartodb-popup-content-wrapper">
+              <div class="cartodb-popup-content">
+                {{name}} watsan: {{watsan}}
+              </div>
+            </div>
+            <div class="cartodb-popup-tip-container"></div>
+          </div>
+        </script>
+
+        <script>
+            var dataLayer;
+            $(document).ready(function () {
+                cartodb.createVis('map', 'https://thenewschool.carto.com/u/brelsfoeagain/api/v2/viz/6b3c46d3-2025-4214-9081-dd187fa9d3f9/viz.json')
+                    .done(function (vis, layers) {
+                        dataLayer = layers[1].getSubLayer(0);
+                        dataLayer.infowindow.set('template', $('#popup-template').html());
+                    });
+
+                $('.name-input').keyup(function () {
+                    dataLayer.setSQL("SELECT * FROM watsan WHERE name ILIKE '%" + $('.name-input').val() + "%'");
+                });
+            });
+        </script>
+        <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+    </body>
 </html>
+
 
 
