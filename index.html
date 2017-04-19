@@ -44,7 +44,7 @@
             <a href="#close" class="cartodb-popup-close-button close">x</a>
             <div class="cartodb-popup-content-wrapper">
               <div class="cartodb-popup-content">
-                {{name}} watsan: {{watsan}}
+                {{name}} Legally Operating Businesses: {{Legally Operating Businesses}}
               </div>
             </div>
             <div class="cartodb-popup-tip-container"></div>
@@ -61,7 +61,7 @@
                     });
 
                 $('.name-input').keyup(function () {
-                    dataLayer.setSQL("SELECT * FROM watsan WHERE name ILIKE '%" + $('.name-input').val() + "%'");
+                    dataLayer.setSQL("SELECT * FROM Legally Operating Businesses WHERE name ILIKE '%" + $('.name-input').val() + "%'");
                 });
             });
         </script>
