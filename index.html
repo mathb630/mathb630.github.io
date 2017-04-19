@@ -30,7 +30,6 @@
         L.mapbox.accessToken = 'pk.eyJ1IjoibWF0aGI2MzAiLCJhIjoiY2oxb2Fna3V3MDE0bzJ3bWh2c2ZpY3k3MCJ9.DG2fE82nUVfV24flWX15bw';
 
         var map = L.map('map', {
-            center: [51.505537, -0.115528],
             zoom: 12
         });
 
@@ -46,7 +45,7 @@
         layers.Streets.addTo(map);
 
         //add cartoDB layer, set z-index so it shows up on top
-        cartodb.createLayer(map, 'https://svpvertex.cartodb.com/api/v2/viz/2a795afa-208c-11e5-ada2-0e4fddd5de28/viz.json').addTo(map)
+        cartodb.createLayer(map, 'https://bm8993.cartodb.com/api/v2/viz/72e1d3c4-f8f5-11e6-835c-0e3ebc282e83/viz.json').addTo(map)
         .on('done', function(layer) {
             layer.setZIndex(5);
         });
