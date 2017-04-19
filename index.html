@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset='utf-8' />
@@ -54,7 +54,7 @@
         <script>
             var dataLayer;
             $(document).ready(function () {
-                cartodb.createVis('map', 'https://thenewschool.carto.com/u/brelsfoeagain/api/v2/viz/6b3c46d3-2025-4214-9081-dd187fa9d3f9/viz.json')
+                cartodb.createVis('map', 'https://bm8993.carto.com/u/api/v2/viz/72e1d3c4-f8f5-11e6-835c-0e3ebc282e83/viz.json')
                     .done(function (vis, layers) {
                         dataLayer = layers[1].getSubLayer(0);
                         dataLayer.infowindow.set('template', $('#popup-template').html());
