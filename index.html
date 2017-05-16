@@ -30,7 +30,7 @@
   <body>
     <div id="map"></div>
      <div class="buttons">
-     <button class="legal businesses">legal businesses</button>
+     <button class=""></button>
      <button class="reset">reset</button>
      </div>
      
@@ -38,15 +38,15 @@
        var watsanlayer
       $(document).ready(function ()  {
             carto.db.createVis('map',
-                  'https://bm8993.carto.com/u/bm8993/api/v2/viz/b33f2f0c-f8f5-11e6-975b-0ee66e2c9693/viz.json',)
+                  'https://bm8993.carto.com/u/bm8993/api/v2/viz/e76d2c9a-39cb-11e7-b134-0ee66e2c9693/viz.json',)
                        .done(function (vis, layers) {
                        watsanlayer = layers[1].getSubLayer(0);
                                });
        $('.public-water').click(function ()   {
-          watsanLayer.setSQL("SELECT * FROM watsan WHERE Legally Operating Businesses = 'LEGAL BUSINESS'");
+          watsanLayer.setSQL("SELECT * FROM merged WHERE merged = 'Noise - Residential'");
         });
          $'reset').click(function () {
-            watsanLayer.setSQL("SELECT * FROM Legally Operating Businesses");
+            watsanLayer.setSQL("SELECT * FROM merged");
         });
      });
     </script>
